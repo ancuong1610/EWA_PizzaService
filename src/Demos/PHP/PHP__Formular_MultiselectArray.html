@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Testformular</title>
+    <style type="text/css">
+        <!--
+        form {
+            background-color: rgb(192, 192, 192);
+            padding: 1em;
+            margin: 2em;
+        }
+
+        -->
+    </style>
+</head>
+<body>
+<h2>Testformulare für PHP</h2>
+
+<form action="PHP_Formular_Echo.php" method="get">
+    <label>Multi-Select:<br/>
+        <!-- ohne [] steht immer nur das letzte Select in PHP zur Verfügung -->
+        <select name="myselect[]" size="4" multiple="multiple">
+            <option value="1">Nr.1</option>
+            <option value="2">Nr.2</option>
+            <option value="3">Nr.3</option>
+            <option value="4">Nr.4</option>
+        </select></label>
+    <p><input type="submit" value="absenden"/> mit GET</p>
+</form>
+<form action="PHP_Formular_Echo.php" method="post">
+    <!--        <p>Name:<br><input maxlength="40" size="40" name="Anwendername" value="c"></p>
+            <p>Text:<br><textarea name="KommentarText" rows="2" cols="40">d</textarea></p>
+    -->
+    <label>Multi-Select:<br/>
+        <select name="myselect[]" size="4" multiple="multiple">
+            <option value="1">Nr.1</option>
+            <option value="2">Nr.2</option>
+            <option value="3">Nr.3</option>
+            <option value="4">Nr.4</option>
+        </select>
+    </label>
+    <p><input type="submit" value="absenden"/> mit POST</p>
+</form>
+</body>
+</html>

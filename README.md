@@ -1,92 +1,89 @@
-# EWA_Prak_Studi_WS23
+# EWA Docker Setup
+You know about [Docker](https://www.docker.com) and Docker is running on your system? You do not want to mess up your system by installing a web server and all the fancy software you need for EWA?
 
+In that case you can simply start several docker containers and you are all set for EWA.
 
+If you succeed in starting the docker containers you will get:
+- Several former examinations - the examination as pdf, the code and the executeable code 
+- a nice way to play and deploy webpages with php, html, css etc. That is exactly what you need for the EWA lab.
+- all demos from the lecture fully functional - just use the links in the pdf of the slides while running the containers
 
-## Getting started
+*Note: This setup is given to you as it is. Please feel free to fork and to modify it. If you do some improvements that might be of interest for others please create a merge request.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Disclaimer
+When running docker containers you should be aware that this might expose your computer to some threats. You do this on your own risk! I am not liable for any loss whether direct, indirect, incidental or consequential, arising out of use of this project.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Install docker
 
-## Add your files
+Install the `docker` tools as explained here: https://docs.docker.com/engine/install/
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+For Linux install `docker-compose` separately: https://docs.docker.com/compose/install/
 
+## Initial Setup
+
+In the folder, where the `docker-compose.yml` file is located, edit the file called `env.txt` in order to assign a root password for your database as environment variable. In order to avoid pushing your password to the repo you may add `env.txt` to the local `.gitignore`.
+Hint: The docker setup uses the ports 80, 3306 and 8085. Please make sure that these ports are not in use by any other software when starting the containers. 
+
+## Start the Containers
+
+Start your local docker containers in a console window with `docker-compose up -d`. 
+After a while (and a lot of messages) you should have 3 containers running:
+- php-apache: Containing Apache Webserver and PHP
+- MariaDB: your database server for SQL
+- PHPmyAdmin a web-based application to modify your database 
+
+All files in the `src`-folder are linked into the apache-php container, so you can see your changes while developing in that folder. Furthermore this folder contains all examples and demos for the lecture. Everything is set up and deployed automatically.
+Note the folder `src\Log` containing the log files of the docker containers (e.g. apache log)
+
+## Test the Installation
+
+Go to [http://localhost](http://localhost) to check the served code. After installation you will see the content of the file `index.php` from the src-folder. 
+
+You can select a file by specifying a path starting from the src-folder to the file at the end of the URL (please be aware that the containers run on linux and linux is case sensitive).
+
+## Stop the Containers
+Call `docker-compose down` to stop the containers.
+
+## Development
+
+To connect to the running mariadb instance use the hostname `mariadb`.
+Example for PHP:
+
+```php
+new MySQLi("mariadb", "your_user", "your_secureuserpw", "your_database");
 ```
-cd existing_repo
-git remote add origin https://code.fbi.h-da.de/ewa_2/ewa_prak_studi_ws23.git
-git branch -M main
-git push -uf origin main
-```
+For normal access to the database without serious permissions please always use the User `public` and the password `public` (That user is created automatically). For root access you have to use the credentials you have set in the `env.txt` or in the `docker-compose.yml` file. 
 
-## Integrate with your tools
+### PHPmyAdmin
 
-- [ ] [Set up project integrations](https://code.fbi.h-da.de/ewa_2/ewa_prak_studi_ws23/-/settings/integrations)
+To access `phpmyadmin` go to [http://localhost:8085/](http://localhost:8085/). For convenience there is a forward from [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
 
-## Collaborate with your team
+Use the credentials you have set in the `env.txt` file for login. The database will be stored persistently. But if you rebuild the database container your entries will be lost. So you should better export a modified database scheme into a sql-file. 
+Hint: The files in the folder `Docker\mariadb.setup` are read when building the docker containers and imported into the database. So if you want to make persistent changes this is the place to go. The files will be imported in alphabetic order. To see changes you made in the files you have to rebuild the MariaDB-container. Be aware that any error in those files will crash the startup of your MariaDB-container! 
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### Major Changes
+If you have changed your `env.txt` or if you want to start from scratch you have to delete and recreate volumes. Be aware that your data base entries will be lost!
+To do so stop the running containers `docker-compose down` and delete the images.
 
-## Test and Deploy
+Note: The name of this image may vary depending on your installation. Please check your existing images with `docker images` and delete the images you do not need anymore.
 
-Use the built-in continuous integration in GitLab.
+### Misc
+- There is a `Makefile` that includes several usefull shortcuts for handling docker. When you have `make`on your system (otherwise you may at least read the commands from the file) you may call the following commands: 
+   - `make start` to start the containers (instead of `docker-compose up -d`)
+   - `make stop` to stop the containers
+   - `make console` to open a shell in the apache docker container (You better know what you are doing? Really!?)
+   - `make build` to rebuild the containers including the database when you made changes to the database schema or to the docker setup
+   - `make clean` to delete all containers (but not your src folder)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- If you encounter strange errors when trying to build the containers (`Release file ... is not valid yet (invalid for another 11min 42s)`) on Windows systems this may happen due to wrong time settings in the container after standby. The easiest fix is to reboot the computer.
+- If the start of the container fails this may be due to ports that are already in use. The docker setup uses the ports 80, 3306 and 8085. Please make sure that these ports are not in use by any other software.
+- You will find the Apache Logfiles in the folder `Log` of your src folder. So you can easily access the log from outside of the container.
+- There are well known attacks on computers using docker and containers. So here are some basic recommendations for security
+  - Please make sure that your firewall is always up and running.
+  - Start the containers only when you need it.
+  
+# EWA using XAMPP & Co.
+If you can not run docker you have to setup the environment for EWA yourself. You need the same setup that is used for the EWA-lab. You will find some hints on the installation in the section "Technische Hinweise" of the current EWA lab. 
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+  Enjoy
+  Ralf Hahn, Feb 2022

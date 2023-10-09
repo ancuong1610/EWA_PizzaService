@@ -1,0 +1,25 @@
+{
+	"name": "pheditor/pheditor",
+	"type": "project",
+	"description": "php file editor",
+	"keywords": [
+		"pheditor",
+		"php",
+		"file editor",
+		"file manager"
+	],
+	"homepage": "https://github.com/pheditor/pheditor",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Hamid Samak",
+			"email": "me@hamidsamak.ir",
+			"homepage": "https://hamidsamak.ir",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0"
+	},
+	"minimum-stability": "stable"
+}

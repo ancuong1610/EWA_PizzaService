@@ -1,0 +1,85 @@
+body {
+    font-family: "Century Gothic", sans-serif;
+}
+
+header, nav, main, footer, .simple {
+    border: 0.1em solid black;
+    border-radius: 1em;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    background: #f8f9fa;
+    flex-wrap: wrap;
+}
+
+main article {
+    background: white;
+}
+
+header {
+    background: darkgrey;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+
+header h1 {
+    flex-grow: 1;
+    text-align: center;
+    align-self: center;
+}
+
+nav {
+    background: gainsboro;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer {
+    background: silver;
+    text-align: center;
+    clear: left;
+}
+
+.simple {
+    font-size: 1.2em;
+    float: left;
+    width: 15em;
+}
+
+/* responsive menu */
+@media only screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+}
+
+/* content that was not required for examination */
+body {
+    width: 95%;
+    margin: auto;
+    color: black;
+}
+
+header, nav, main, footer, .simple {
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.invisible {
+    display: none;
+}
+
+main article {
+    width: 15em;
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+header {
+    height: 4em;
+}
+

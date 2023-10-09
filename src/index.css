@@ -1,0 +1,42 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+    max-width: 50%;
+}
+  
+.flex-item {
+    display: block;
+    background-color: #555555;
+    color: #fff;
+    padding: 10px;
+
+    flex: 50%;
+
+    border: 2px solid #fff;
+    text-decoration: none;
+}
+
+.flex-item--warning {
+    background-color: #000;
+}
+
+.flex-item.flex-item--warning:hover {
+    background-color: #fff;
+    border-color: #000;
+    color: #000;
+}
+
+.flex-item:hover {
+    background-color: #fff;
+    border-color: #555555;
+    color: #555555;
+}
+
+@media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+      max-width: 100%;
+    }
+}

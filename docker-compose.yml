@@ -1,0 +1,55 @@
+# docker-compose for building the image for debugging and uploading to docker hub
+version: '3'
+services:
+  php-apache:
+    image:  registry.code.fbi.h-da.de/ewa_public/23ss_base_project/ewa_php-apache:latest
+    container_name: ewa_lab_php_apache
+    environment:
+      TZ: "Europe/Berlin"
+    ports:
+      - 127.0.0.1:80:80
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - ewa_lab_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  mariadb:
+    image:  registry.code.fbi.h-da.de/ewa_public/23ss_base_project/ewa_mariadb:latest    
+    container_name: ewa_lab_mariadb
+    volumes:
+      - mariadb:/var/lib/mysql
+      - ./mariadb/mariadb.setup:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_INITDB_SKIP_TZINFO: 1
+      TZ: "Europe/Berlin"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+      MYSQL_DATABASE: "ewa"
+      MYSQL_USER: "public"
+      MYSQL_PASSWORD: "public"
+    env_file: env.txt
+    ports:
+      - "3306:3306"
+    networks:
+      - ewa_lab_network      
+
+  phpadmin:
+    image:  registry.code.fbi.h-da.de/ewa_public/23ss_base_project/ewa_phpmyadmin:latest
+    container_name: ewa_lab_phpmyadmin
+    networks:
+      - ewa_lab_network
+    ports:
+      - 127.0.0.1:8085:80
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+    env_file:
+      - env.txt
+volumes:
+    mariadb:
+    
+networks:
+    ewa_lab_network:
+        name: ewa_lab_net
+        driver: bridge

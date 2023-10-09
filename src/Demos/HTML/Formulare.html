@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <script>
+        function GetOrPost() {
+            "use strict";
+            let mode;
+            if (document.getElementById('radioGet').checked) {
+                mode = "get";
+            } else {
+                mode = "post";
+            }
+            //alert(mode);
+            document.getElementById('myForm').setAttribute("method", mode);
+        }
+    </script>
+
+    <title>Steuerelemente für Formulare</title>
+    <style type="text/css">
+        <!--
+        label {
+            margin: 5pt;
+            font-size: small;
+            display: inline-block;
+        }
+
+        input[type=text], textarea, select {
+            font: normal 1em arial;
+            width: 15em;
+        }
+
+        fieldset {
+            float: left;
+            width: 15em;
+            display: block;
+        }
+
+        -->
+    </style>
+</head>
+
+<body>
+<h2>Steuerelemente für Formulare</h2>
+
+<hr/>
+
+<form onsubmit="GetOrPost()" id="myForm" accept-charset="UTF-8" action="http://localhost/my-cgi-bin/echo.php"
+      method="get">
+    <fieldset>
+        <legend>Bitte machen Sie Ihre Eingaben</legend>
+
+        <label>Einzeiliges Textfeld
+            <input type="text" name="T1" placeholder="Ihre Eingabe"/>
+        </label>
+
+        <label>Textfeld mit Scrollbalken
+            <textarea name="S1" placeholder="Viiiiiel Text" rows="3"></textarea>
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Bitte wählen Sie aus</legend>
+
+        <label for="XXX">List-Box</label>
+        <select name="XXX" id="XXX" size="3" onchange="alert(this.form.XXX.options[this.form.XXX.selectedIndex].value)">
+            <option value="1" selected> 1. Möglichkeit</option>
+            <option value="2"> 2. Möglichkeit</option>
+            <option value="3"> 3. Möglichkeit</option>
+            <option value="4"> 4. Möglichkeit</option>
+        </select>
+
+        <label for="D1">Combo-Box</label>
+        <select name="D1" id="D1" size="1">
+            <option selected> 1. Möglichkeit</option>
+            <option> 2. Möglichkeit</option>
+            <option> 3. Möglichkeit</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <legend>Radiobuttons</legend>
+        <label>
+            <input type="radio" id="radioGet" checked name="R2" value="get"/>
+            Mit GET übertragen
+        </label>
+        <label>
+            <input type="radio" id="radioPost" name="R2" value="post"/>
+            Mit POST übertragen
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Checkboxen</legend>
+        <label for="C1">Flag1
+            <input type="checkbox" checked id="C1" name="C1" value="ON"/>
+        </label>
+        <label for="C2">Flag2
+            <input type="checkbox" id="C2" name="C2"/>
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Schaltflächen</legend>
+        <input type="submit" id="B1" name="B1" value="Abschicken"/>
+        <input type="reset" name="B2" value="Zurücksetzen"/>
+    </fieldset>
+
+
+</form>
+</body>
+</html>

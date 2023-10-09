@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Test</title>
+    <script type="text/javascript">
+
+        function processData() {
+            if (request.readyState === 4) {			// Übertragung = DONE
+                if (request.status === 200) {	   		// HTTP-Status = OK
+                    if (request.responseText != null)
+                        process(request.responseText);		// Daten weiterverarbeiten
+                    else console.error("Dokument ist leer");
+                } else console.error("Uebertragung fehlgeschlagen:" + request.status);
+            }	// else // Übertragung läuft noch
+        }
+
+        function process(intext) { // Text ins DOM einfuegen
+            let myText = document.getElementById("myText");
+            myText.firstChild.nodeValue = intext;
+            document.getElementById("myb").value = "Fertig!"
+        }
+
+        let request = new XMLHttpRequest(); // für Firefox & IE7
+        //request = new ActiveXObject("Microsoft.XMLHTTP"); // für <= IE 6
+
+        function requestData() {
+            document.getElementById("myb").value = "Gleich kommts!";
+            request.open("GET", "Zeit.php");	// URL für HTTP-GET festlegen
+            request.onreadystatechange = processData;	// Callback-Handler zuordnen (fuer IE7 erst NACH open!!!
+            request.send(null);	// Request abschicken
+        }
+    </script>
+</head>
+<body>
+<h1>Gleich kommt die Zeit</h1>
+<p id="myText">noch nicht!</p>
+<form action="Zeitanzeigen2.html">
+    <input type="button" id="myb" value="Los!" onclick="requestData()"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+	<!-- //NOSONAR --><meta http-equiv="refresh" content="5" />
+    <title>PDF-Demo</title>
+</head>
+<style>
+	html, body {
+		height: 100%;
+		margin: 0;         /* Reset default margin on the body element */
+	}
+</style>
+<body>
+    <object data="XSS_Demo_pdf.php" type="application/pdf" style="height:100%;width:100%">
+        <embed src="XSS_Demo_pdf.php" type="application/pdf" style="height:100vh;width:100%" height=100vh;width=100%/>
+    </object>
+</body>
+</html>

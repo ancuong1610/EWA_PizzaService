@@ -1,0 +1,43 @@
+* {
+    font-family: "Times New Roman", sans-serif;
+    font-size: 1rem;
+    background-color: lightgrey;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: bold; /* ist default */
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: bold; /* ist default */
+    margin-top: 0; /* nicht verlangt */
+}
+
+p {
+    margin-top: 0; /* nicht verlangt */
+}
+
+#name {
+    font-style: italic;
+}
+
+div {
+    border: 0.1rem solid black;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.submit {
+    width: 10rem;
+    padding: 1rem;
+    display: inline-block; /* ist default */
+}
+
+progress {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* nicht verlangt */

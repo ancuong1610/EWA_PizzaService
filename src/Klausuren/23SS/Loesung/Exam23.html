@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>OPIs Baumarkt</title>
+    <script src="Exam23.js"></script>
+    <link rel="stylesheet" type="text/css" href="Exam23.css" />
+  </head>
+  <body>
+    <header>
+      <h1>OPI's Baumarkt</h1>
+    </header>
+    <main>
+      <nav id="navigation" role="navigation">
+        <a href="#">Übersicht</a>
+        <a href="#">Bauen</a>
+        <a href="#">Garten</a>
+        <a href="#">Tiergarten</a>
+      </nav>
+      <section>
+        <h2>Summer Special "Haustiere"</h2>
+        <p>Wissenswertes zu unseren Lieblingen...</p>
+      </section>
+
+      <section>
+        <h2>Newsletter</h2>
+        <div id="newsletter_form">
+          <p>Hier können Sie sich für den Newsletter anmelden:</p>
+          <form method="post" action="Exam23Api.php" accept-charset="UTF-8">
+            <fieldset>
+              <legend>Anmeldung</legend>
+              <div class="input">
+                <label for="input_name">Name:</label>
+                <input type="text" required name="name" value="" id="input_name" />
+              </div>
+              <div class="input">
+                <label for="input_email">E-Mail:</label>
+                <input type="email" required name="email" id="input_email" />
+              </div>
+              <input type="submit" value="absenden" />
+              <input
+                type="button"
+                onclick="sendData();"
+                value="absenden via Ajax"
+              />
+            </fieldset>
+          </form>
+        </div>
+        <div>
+          <p id="newsletter_response"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Bei zwei linken Händen sollten Sie lieber in den gelben Seiten
+      nachschauen.
+    </footer>
+  </body>
+</html>

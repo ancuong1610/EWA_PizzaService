@@ -1,0 +1,69 @@
+/* a */
+/* b */
+table tr td th {
+    background-color: lightgray;
+    padding: 1em;
+}
+
+/* c */
+#players {
+    color: #fff;
+    background-color: #40785e;
+    padding:0.3em;
+}
+
+/* d */
+header img {
+    float: left;
+	height: 2em;
+}
+/* ************* CSS - das nicht in der Klausur gefragt war ************** */
+* {
+    padding: 0;
+    margin: 0;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+table tr th {
+    background-color: darkblue;
+    color: ghostwhite;
+}
+body {
+    font-family: Roboto, sans-serif;
+    color: black;
+    background-color: #F2F2F2;
+    padding:1em;
+    width: 50em;
+}
+
+section {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    line-height:2em;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0 .6em 1em rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+header {
+    padding: 2em;
+    text-align: center;
+    background: darkblue;
+    color: white;
+    font-size: 2em;
+}
+
+input[type='submit'] {
+    padding:1em;
+    font-weight: bold;
+    letter-spacing: .2em;
+}
+
+h3 {
+    font-size:1.5em;
+    margin:1em;
+    font-weight: normal;
+}

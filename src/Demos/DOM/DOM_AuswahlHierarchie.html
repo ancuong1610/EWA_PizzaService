@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8"/> <!-- äöüÄÖÜß€-->
+	<title>Beispiel (b) für ECMAScript und DOM</title>
+	<style type="text/css">
+
+/* allgemeine Styles */
+		body { font-family:Arial, Helvetica, sans-serif; }
+		h1   { font-size:1.2em; }
+		h2   { font-size:1.2em; }
+		img  { margin-top:2em; width: 13.75em; height: 12.75em; }
+		p    { width:15em; line-height:1.5em; }
+		select { width:100%; }
+
+	</style>
+	<script type="text/javascript">
+
+		function Initialisierung() {
+			"use strict";
+			Vorauswahl("Landwahl", "Inselwahl");
+		}
+
+		let Inseln_Spanien = ["Ibiza", "Mallorca", "Teneriffa"];
+		let Inseln_Italien = ["Elba", "Sardinien"];
+		let Inseln_Griechenland = ["Korfu", "Kreta", "Rhodos", "Samos"];
+
+		function Vorauswahl(OberlisteID, UnterlisteID) {
+			"use strict";
+			let Oberliste = document.getElementById(OberlisteID);
+			let Unterliste = document.getElementById(UnterlisteID);
+			let Auswahl = Oberliste.options[Oberliste.selectedIndex].text;
+			let Inseln = eval("Inseln_" + Auswahl);
+
+			while (Unterliste.firstChild != null)
+				Unterliste.removeChild(Unterliste.firstChild);
+			for (let i = 0; i < Inseln.length; i++) {
+				let neuesElement = document.createElement("option");
+				let neuerText = document.createTextNode(Inseln[i]);
+				neuesElement.appendChild(neuerText);
+				Unterliste.appendChild(neuesElement);
+			}
+		}
+
+	</script>
+</head>
+<body onload="Initialisierung();">
+<h1>Beispiele für ECMAScript und DOM</h1>
+<h2>Auswahlhierarchie</h2>
+<form action="http://localhost/cgi-bin/echo.pl" method="post">
+	<p>
+		<label>Wählen Sie erst das Land...<br/>
+			<select name="Land" size="3" id="Landwahl"
+					onchange="Vorauswahl('Landwahl', 'Inselwahl');">
+				<option selected="selected">Spanien</option>
+				<option>Italien</option>
+				<option>Griechenland</option>
+			</select>
+		</label><br/>
+
+		<label>...und dann die Insel:<br/>
+			<select name="Insel" id="Inselwahl" size="4">
+				<option>&nbsp;</option>
+			</select>
+		</label><br/>
+	</p>
+</form>
+<div>
+	<img src="Auswahlhierarchie.gif" alt="DOM-Teilbaum"/>
+</div>
+</body>
+</html>

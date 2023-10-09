@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Klassen in JS6</title>
+    <script>
+
+        "use strict";
+
+        class Bruch {
+            constructor(zaehler, nenner) {
+                this.z = zaehler;
+                this.n = nenner;
+            }
+
+            toString() {
+                return '(' + this.z + ' / ' + this.n + ')';
+            }
+
+            mal(faktor) {
+                return new Bruch(this.z * faktor.z, this.n * faktor.n);
+            }
+        }
+
+        function main() {
+            let x = new Bruch(3, 5);
+            let y = new Bruch(4, 7);
+
+            let m = x.mal(y);
+
+            document.write(x.toString());
+            document.write("*");
+            document.write(y.toString());
+            document.write("=");
+            document.write(m.toString());
+        }
+
+    </script>
+</head>
+<body id="body" onload="main();">
+</body>
+</html>

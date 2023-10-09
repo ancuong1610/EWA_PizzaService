@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <style>
+        .left {
+            float: left;
+            width: 49%;
+            height: 100vh;
+        }
+
+        .right {
+            float: right;
+            width: 49%;
+            height: 100vh;
+        }
+        .comment {color: dimgray;}
+    </style>
+    <meta charset="UTF-8"/>
+
+    <title>Session-Demo</title>
+</head>
+<body>
+<main>
+    <h1>Session-Demo</h1>
+    <p>Hier können Sie im Rahmen einer kleinen Login-Funktion sehen und ausprobieren, wie sich verschiedene
+        Änderungen im Code auswirken und wie das Zusammenspiel der Seiten Login und Admin erfolgt.
+        Eine Datenbankanbindung wurde zur Vereinfachung nicht integriert.
+        Probieren Sie folgende Änderungen im Code aus und beobachten Sie, was sich verändert. Versuchen Sie dies
+        nachzuvollziehen.
+    </p>
+    <ul>
+        <li>Aktivieren Sie die Developer-Werkzeuge Ihres Browsers und schauen Sie ob und wie eine Session-Id
+            übermittelt wird (Cookie/hidden Field)</li>
+        <li>Was fällt Ihnen beim Start dieser Seite auf?</li>
+        <li>Melden Sie sich in Login.php mit irgendwelchen Daten an, was ändert sich? Wenn Sie weiterhin die Login-Seite
+            sehen möchten, dann machen Sie einen Rechtsklick im linken Frame und wählen zurück.
+        </li>
+        <li>Schauen Sie sich die Session-Dateien an, führen Sie dazu folgende Befehle aus (alles nach <span class="comment"># ist ein Kommentar!</span>)
+            <ul>
+                <li>docker exec -it ewa2_php_apache bash <span class="comment"># damit starten Sie die bash Ihres Apache-Docker-Containers</span></li>
+                <li>cd /tmp</li>
+                <li>more sess_ &nbsp; <span class="comment"># mit tab jetzt den Dateinamen vervollständigen lassen</span></li>
+                <li>exit <span class="comment"># damit verlassen Sie die bash</span></li>
+            </ul>
+        </li>
+        <li>Klicken Sie im Frame links auf 'logout', was verändert sich?</li>
+        <li>Passen Sie die Seite Login.php wie folgt an: Rückgabe false bei validateCredentials</li>
+        <li>Passen Sie die Seite Login.php wie folgt an: Rückgabe einer anderen Rolle, z.B. 'normal' in getRole</li>
+        <li>Passen Sie die Seite Admin.php wie folgt an: kommentieren Sie session_start aus, was passiert nun?
+            Debugger?
+        </li>
+        <li>Passen Sie die Seite Login.php wie folgt an: Rufen Sie session_start() als zweite Zeile in
+            processReceivedData auf.
+        </li>
+        <li>Passen Sie die Seite Login.php wie folgt an: Rufen Sie session_start() in generateView nach dem Aufruf von
+            generatePageHeader auf (so nicht! warum?).
+        </li>
+    </ul>
+    <iframe class="left" src="Login.php" title="Login"></iframe>
+    <iframe class="right" src="Admin.php" title="Admin"></iframe>
+</main>
+</body>
+</html>

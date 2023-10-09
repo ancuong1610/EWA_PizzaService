@@ -1,0 +1,24 @@
+/* First_CSS */
+* {
+    margin: 0.2em;
+    padding: 0.2em;
+    color: blue;
+    background-color: lightgrey;
+}
+
+body {
+    font: 1em Calibri, sans-serif;
+    width: 50%;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+.center {
+    text-align: center;
+}
+
+#inhalt_ID {
+    border: 0.1em solid white;
+}

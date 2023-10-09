@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+	<html lang="de">
+		<head>
+			<meta charset="UTF-8"/>
+			<title>News mit Flexbox</title>
+			<style>
+				<!--
+
+body { /* Aufgabe 5a */
+    font-family: Roboto, sans-serif;
+}
+
+li {
+    list-style-type: none; /* oder list-style: none; */
+    display: inline-block;
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: flex-start;
+	
+}
+
+article { /* flex-item */
+    /* width: 15em; */
+	flex-basis: 15em;
+	
+    height: 15em;
+    overflow: auto;
+}
+
+footer { /* Aufgabe 5d */
+    margin-top: 2em;
+    text-align: center;
+    background-color: grey;
+    color: white;
+}
+
+
+
+/* ************* CSS - das nicht in der Klausur gefragt war ************** */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: black;
+    background-color: GhostWhite;
+    font-size: 1em;
+}
+
+li {
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: lightgrey;
+    color: black;
+}
+
+article {
+    margin: 0.5em;
+    padding: 0.5em;
+	/* text-align: justify; */
+}
+
+header {
+    text-align: center;
+    color: white;
+    background-color: grey;
+    height: 5em;
+    padding: 1em;
+
+}
+
+section {
+    padding: 1em;
+}
+
+header img {
+    float: left;
+    height: 4em;
+}
+
+h1 {
+    display: inline;
+    text-align: center;
+}
+
+p {
+    margin-top: 0.5em;
+}
+
+nav {
+    margin-top: -1.5em;
+    height: 2em;
+}
+
+textarea {
+    width: 100%;
+    display: block;
+}
+
+.formular {
+    width: 35%;
+    min-width: 30em;
+    padding: 0.5em;
+}
+
+input[type='text'] {
+    display: block;
+    width: 100%;
+}
+
+input[type='submit'] {
+    display: block;
+    width: 10em;
+    padding: 0.2em;
+    margin: 0.2em;
+    background: silver;
+}
+		-->
+			</style>
+		</head>
+		<body>
+			<header>
+				<h1>Meine Zeitung</h1>
+			</header>
+			<nav>
+				<ul>
+					<li>Home</li>
+					<li>Mediathek</li>
+					<li>Politik</li>
+					<li>Sport</li>
+				</ul>
+			</nav>
+			<section>
+				<h2>News-Ticker</h2>
+				<div id="news" class="flex-container">
+					<article class="flex-item">
+						<h3>Solidarität statt Rendite? – Mit ihrem 1. Dialog-Forum trifft die h_da einen Nerv</h3>
+						<p class="timestamp">13.07.2020 11:12:19</p>
+						<p>Mit ihrem 1. Dialog-Forum trifft die h_da einen Nerv: Rund 300 Bürgerinnen und Bürger verfolgen die Podiumsdiskussion über das Verhältnis von Gemeinwohl-Ökonomie und Wirtschaftswachstum</p>
+					</article>
+					<article class="flex-item">
+						<h3>Campus Haardtring: Studierende und Beschäftigte setzen sich für mehr Verkehrssicherheit ein</h3>
+						<p class="timestamp">07.07.2020 11:10:13</p>
+						<p>Viele Studierende und Beschäftigte am Campus Haardtring erreichen die dortigen Gebäude über die Haltestelle „Hochschule West“. Doch Richtung Süden müssen sie den vierspurigen Haardtring überqueren, um zur Haltestelle zu laufen. Allerdings gibt es hier keine Fußgängerüberquerung. Um auf diese Gefahrenquelle aufmerksam zu machen und eine Lösung einzufordern, haben Mitglieder des Fachbereichs Bauingenieurwesen in Kooperation mit der h_da-Mobilitätskommission 1.000 Unterschriften gesammelt. Diese wurden nun dem städtischen Mobilitätsamt übergeben. Das möchte jetzt schnell reagieren.</p>
+					</article>
+					<article class="flex-item">
+						<h3>Hochschulpakt unterzeichnet: h_da erwartet positiven Effekt auf Forschung und Lehre</h3>
+						<p class="timestamp">05.07.2020 11:09:05</p>
+						<p>Der hessische Hochschulpakt für die Jahre 2021 bis 2025 ist unterschrieben. Darin haben die Landesregierung und die Hochschulen die Rahmenbedingungen für die Hochschulentwicklung in den kommenden fünf Jahren vereinbart. Erstmals erhalten die Hochschulen für Angewandte Wissenschaften (HAWs) und somit auch die Hochschule Darmstadt (h_da) reguläre Haushaltsmittel für den Aufbau eines akademischen Mittelbaus. </p>
+					</article>
+					<article class="flex-item">
+						<h3>Ist das &lt;script&gt;-Tag böse?</h3>
+						<p class="timestamp">03.07.2020 11:05:38</p>
+						<p>Am 13.07.2020 berichtet Prof. Dr. E. Wa über die Vor- und Nachteile der JavaScript-Tags in HTML</p>
+					</article>
+				</div>
+			</section>
+			<section>
+				<h2>Ihre News</h2>
+				<form action="news.php" method="post" accept-charset="UTF-8">
+					<div class="formular">
+						<input type="text" name="Titel" placeholder="Titel Ihrer News" value="" tabindex="1"/>
+						<textarea name="Text2" placeholder="Ihre News" tabindex="2" accesskey="n"></textarea>
+						<input type="submit" value="Absenden" tabindex="-1"/>
+					</div>
+				</form>
+			</section>
+			<footer>
+				<p>&copy; Fachbereich Informatik</p>
+			</footer>
+		</body>
+	</html>

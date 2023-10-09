@@ -1,0 +1,97 @@
+/** Default-Werte setzen **/
+* {
+    margin: 0.2em;
+    padding: 0.2em;
+    color: black;
+}
+
+body {
+    color: black;
+    background-color: WhiteSmoke
+}
+
+#footer, .header {
+    color: white;
+    background-color: grey
+}
+
+img {
+    width: 4em;
+}
+
+/* Nicht erwartet */
+ul {
+    list-style: none;
+    text-align: left;
+}
+
+.nav_normal {
+    border: 0.1em solid black
+}
+
+article {
+    text-align: justify;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+/* a) */
+* {
+    font-family: Helvetica, sans-serif
+}
+
+/* b) */
+h1 {
+    font-size: 1.2rem
+}
+
+#footer {
+    font-size: 0.8rem
+}
+
+/* c) */
+a:visited {
+    color: DarkGray;
+}
+
+/* d) */
+/* Layout */
+nav {
+    float: left;
+}
+
+footer {
+    clear: both;
+}
+
+/** Zuerst Handys als Default **/
+.nav_normal {
+    display: none
+}
+
+.nav_icon {
+    display: block;
+}
+
+/* e) */
+@media only screen and (min-width: 600px) {
+    .nav_normal {
+        display: inline-block;
+    }
+
+    .nav_icon {
+        display: none;
+    }
+}
+
+/* f) */
+nav ul li input[type="text"] {
+    border: 0.1em dashed grey !important
+}
+
+
+
+

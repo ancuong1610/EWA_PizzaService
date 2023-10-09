@@ -1,0 +1,48 @@
+footer {
+  padding: 0.5 em;
+  font-size: larger;
+}
+
+main {
+  padding: 0.5em;
+}
+
+nav {
+  padding: 0.5em;
+}
+
+/********************* Erwartete CSS-Elemente ***************/
+
+header, footer {
+  border: 0.1em solid black;
+  background-color: lightgray;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav {
+  border: 0.1em solid black;
+}
+
+nav a {
+  display: block;
+}
+
+label {
+  width: 4em;
+  display:inline-block;
+}
+
+@media only screen and (max-width: 800px) {
+  main {
+    flex-direction: column;
+  }
+  nav a {
+    display: inline-block;
+  }
+}

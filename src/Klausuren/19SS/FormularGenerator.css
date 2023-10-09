@@ -1,0 +1,51 @@
+/* In der Klausur nicht erwartet */
+* {
+    font-size: 1rem;
+    color: black;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+}
+
+label {
+    display: inline-block;
+    margin: 1em;
+}
+
+.row {
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.submit {
+    padding: 0.5em;
+    margin: 1em;
+}
+
+* {
+    font-family: Verdana, sans-serif;
+    background-color: #eeeeee;
+}
+
+form {
+    border: 0.2em solid black;
+    background-color: grey;
+}
+
+label {
+    width: 15em;
+}
+
+input {
+    width: 15em;
+}
+
+.row {
+    display: inline-block;
+    border: 0.2rem solid grey;
+}
+
+.submit {
+    width: auto;
+    display: block;
+}

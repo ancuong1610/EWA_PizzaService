@@ -1,0 +1,43 @@
+/* In der Klausur nicht erwartet, aber für das Ergebnis sinnvoll */
+* {
+    font-size: 1rem;
+}
+
+div {
+    position: relative;
+}
+
+/* wird damit zur Referenz für #poster */
+
+/* erwartete Formate */
+h1 {
+    font-family: "Times New Roman", serif;
+    font-size: 1.5rem;
+    color: grey;
+    text-align: center;
+    background-color: white;
+}
+
+#zimmer {
+    width: 100%;
+}
+
+#poster {
+    position: absolute;
+    top: 25%;
+    left: 33.33%;
+    width: 33.33%;
+    z-index: 99;
+}
+
+form {
+    text-align: center;
+}
+
+input {
+    font-family: Arial, sans-serif;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,105 @@
+
+body { /* Aufgabe 5a */
+    font-family: Roboto, sans-serif;
+}
+
+li { /* Aufgabe 5b */
+    list-style-type: none; /* oder list-style: none; */
+    display: inline-block;
+}
+
+article { /* Aufgabe 5c */
+    display: inline-block;
+
+    width: 15em;
+    height: 15em;
+
+    overflow: auto;
+}
+
+footer { /* Aufgabe 5d */
+    margin-top: 2em;
+    text-align: center;
+    background-color: grey;
+    color: white;
+}
+
+/* ************* CSS - das nicht in der Klausur gefragt war ************** */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: black;
+    background-color: GhostWhite;
+    font-size: 1em;
+}
+
+li {
+    margin: 0.5em;
+    padding: 0.5em;
+    background-color: lightgrey;
+    color: black;
+}
+
+article {
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+header {
+    text-align: center;
+    color: white;
+    background-color: grey;
+    height: 5em;
+    padding: 1em;
+
+}
+
+section {
+    padding: 1em;
+}
+
+header img {
+    float: left;
+    height: 4em;
+}
+
+h1 {
+    display: inline;
+    text-align: center;
+}
+
+p {
+    margin-top: 0.5em;
+}
+
+nav {
+    margin-top: -1.5em;
+    height: 2em;
+}
+
+textarea {
+    width: 100%;
+    display: block;
+}
+
+.formular {
+    width: 35%;
+    min-width: 30em;
+    padding: 0.5em;
+}
+
+input[type='text'] {
+    display: block;
+    width: 100%;
+}
+
+input[type='submit'] {
+    display: block;
+    width: 10em;
+    padding: 0.2em;
+    margin: 0.2em;
+    background: silver;
+}

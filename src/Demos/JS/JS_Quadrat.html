@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Sinn des Lebens</title>
+    <script>
+        /*jslint browser:true */
+        /*global alert */
+
+        let Hinweis = "Hurra! Quadratzahlen!";
+        alert(Hinweis);
+
+        function schreibeQuadrate() {
+            "use strict";
+            let i, x, SinnDesLebens, Satzteil;
+            SinnDesLebens = 42;
+            Satzteil = "Das Quadrat von ";
+            for (i = SinnDesLebens; i > 0; i = i - 1) {
+                x = i * i;
+                document.getElementById('text').innerText += Satzteil + i + " ist " + x + "\n";
+            }
+        }
+    </script>
+</head>
+<body onload="schreibeQuadrate();"><p id="text"></p>
+</body>
+</html>

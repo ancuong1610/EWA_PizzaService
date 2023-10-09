@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CgiTestformular</title>
+</head>
+<body>
+<h1>CgiTestFormular</h1>
+<p>Dieses Formular sendet an
+    <a href="http://localhost/my-cgi-bin/echo.php"> http://localhost/my-cgi-bin/echo.php
+    </a>
+</p>
+<form action="http://localhost/my-cgi-bin/echo.php" method="get" accept-charset="UTF-8">
+    <label>Name:<br/>
+        <input maxlength="40" size="40" name="Anwendername"/>
+    </label><br/>
+    <label>Text:<br/>
+        <textarea name="KommentarText" rows="2" cols="40"></textarea>
+    </label>
+    <p><input type="submit" value="absenden"/> mit GET</p>
+</form>
+<form action="http://localhost/my-cgi-bin/echo.php" method="post" accept-charset="UTF-8">
+    <label>Name:<br>
+        <input maxlength="40" size="40" name="Anwendername"/>
+    </label><br/>
+    <label>Text:<br/>
+        <textarea name="KommentarText" rows="2" cols="40"></textarea>
+    </label>
+    <p><input type="submit" value="absenden"/> mit POST</p>
+</form>
+</body>
+</html>
