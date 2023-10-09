@@ -12,7 +12,7 @@ $Exam="";
 $ExamInfo="";
 if (is_dir("Exam")) {
     $ExamInfo="<li><strong>Use the folder Exam (located in src/Exam) for your solution of the examination. Do not use any other folder!</strong></li>";
-    $Exam = "<a class=\"flex-item flex-item--warning\" href=\"./Exam\">Exam</a>";
+    $Exam = "<a class=\"flex-item flex-item--warning\" href=\"./Exam\">Klausur</a>";
 }
 
 echo <<<HTML
@@ -40,13 +40,14 @@ echo <<<HTML
     <h2>Navigation</h2>
     <div class="flex-container">
         <a href="./Demos" class="flex-item">Demos</a>
-        <a href="./Klausuren" class="flex-item">Klausuren</a>
+        <a href="./Klausuren" class="flex-item">Altklausuren</a>
     </div>
     <div class="flex-container">
         $Prak
-        <a href="./Playground" class="flex-item">Playground</a>
+        <a href="./Playground" class="flex-item">Spielwiese</a>
     </div>
     <div class="flex-container">
+        <a href="./Exam_Probe" class="flex-item">Probeklausur</a>
         $Exam
     </div>
 </main>
