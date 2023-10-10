@@ -35,6 +35,7 @@ echo <<<HTML
         <li>Many good examples are located in <b>Demos</b></li>
         <li>Play around in the <b>Playground</b> folder</li>
         $PrakInfo
+        <li>Use the <b>Exam_Probe</b> folder for our exam test run</li>
         $ExamInfo
     </ul>
     <h2>Navigation</h2>
