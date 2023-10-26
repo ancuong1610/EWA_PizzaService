@@ -31,7 +31,7 @@ echo <<<HTML
 <main>
     <ul>
         <li>This is the content of the file 'index.php' in the folder <b>'src'</b>!</li>
-        <li>For older examinations you may have a look in the <b>Altklausuren</b> folder</li>
+        <li>For older examinations you may have a look in the <b>Klausuren</b> folder</li>
         <li>Many good examples are located in <b>Demos</b></li>
         <li>Play around in the <b>Playground</b> folder</li>
         $PrakInfo
