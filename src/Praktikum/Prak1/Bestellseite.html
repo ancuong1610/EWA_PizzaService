@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<section>
+    <h1> Order Menu </h1>
+
+    <!-- Each menu item should be inside its own form element -->
+    <form action="https://echo.fbi.h-da.de/" method="post">
+        <img src="pizza.jpg" alt="Just a Pizza" width="100" height="100">
+        <p>Margherita</p>
+        <p>4.00€</p>
+        <input type="hidden" name="item" value="Margherita">
+        <input type="hidden" name="price" value="4.00">
+        <button type="submit" tabindex="1" accesskey="M">Add to Basket</button>
+    </form>
+
+    <form action="https://echo.fbi.h-da.de/" method="post">
+        <img src="pizza.jpg" alt="Just a Pizza" width="100" height="100">
+        <p>Hawaii</p>
+        <p>5.00€</p>
+        <input type="hidden" name="item" value="Hawaii">
+        <input type="hidden" name="price" value="5.00">
+        <button type="submit" tabindex="2" accesskey="H">Add to Basket</button>
+    </form>
+
+    <form action="https://echo.fbi.h-da.de/" method="post">
+        <img src="pizza.jpg" alt="Just a Pizza" width="100" height="100">
+        <p>Salami</p>
+        <p>4.50€</p>
+        <input type="hidden" name="item" value="Salami">
+        <input type="hidden" name="price" value="4.50">
+        <button type="submit" tabindex="3" accesskey="S">Add to Basket</button>
+    </form>
+
+
+</section>
+
+<!-- Basket of checklist -->
+<section>
+    <h2>Basket of goods</h2>
+
+    <form action="https://echo.fbi.h-da.de/" method="post">
+        <select name="selected_item" tabindex="4">
+            <option value="Margherita" selected>Margherita</option>
+            <option value="Salami">Salami</option>
+            <option value="Hawaii">Hawaii</option>
+        </select>
+        <p>14.50€</p>
+        <button type="submit" name="action" value="delete_all" tabindex="5" accesskey="D">Delete all Products</button>
+        <button type="submit" name="action" value="delete_selection" tabindex="6" accesskey="X">Delete Selection</button>
+        <button type="submit" name="action" value="order" tabindex="7" accesskey="O">Order</button>
+    </form>
+</section>
+</body>
+</html>
