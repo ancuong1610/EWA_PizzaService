@@ -59,18 +59,23 @@ class Customer {
             }
 
             echo <<<HTML
-                <p><strong>Total Price:</strong> {$order['totalPrice']}</p>
-                <p><strong>Status:</strong> {$order['status']}</p>
-                <hr> <!-- Divider for clarity -->
+                    <p><strong>Total Price:</strong> {$order['totalPrice']}</p>
+                    <p><strong>Status:</strong> {$order['status']}</p>
+                    <input type="hidden" name="customer_name" value="{$customerInfo['name']}">
+                    <hr> <!-- Divider for clarity -->
             HTML;
         }
 
         echo <<<HTML
-            <div id="statusBar">
-                <!-- Status bar for orders (im Vorberitung, fertig, Lieferung) -->
-            </div>
+                <form action="https://echo.fbi.h-da.de/" method="post">
+                    <button type="submit" name="submit_all_orders">Update All Orders</button>
+                </form>
 
-            <script src="interact.js"></script>
+                <div id="statusBar">
+                    <!-- Status bar for orders (im Vorberitung, fertig, Lieferung) -->
+                </div>
+
+                <script src="interact.js"></script>
             </body>
             </html>
         HTML;

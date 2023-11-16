@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
 
-class Bestellung{
-    protected function generateView():void
-    {
+class Bestellung {
+    protected function generateView(): void {
         $pizzas = [
             ['name' => 'Margherita', 'price' => '4,00 €'],
             ['name' => 'Salami', 'price' => '4,50 €'],
@@ -23,8 +22,7 @@ class Bestellung{
                 <h2>
                     <strong>Speisekarte</strong>
                 </h2>
-
-            HTML;
+        HTML;
 
         foreach ($pizzas as $pizza) {
             echo <<<HTML
@@ -39,52 +37,53 @@ class Bestellung{
                 <p>{$pizza['price']}</p>
             HTML;
         }
-    
 
         echo <<<HTML
             <h1> Order Menu </h1>
-
             <form action="https://echo.fbi.h-da.de/" method="post" target="_blank">
-                    <select name="Pizza" id="selectPizza" class="selectPizza" onchange="seePrice()" size="7" multiple>
-                        <option value="margherita">Margherita</option>
-                        <option value="salami">Salami</option>
-                        <option value="hawaii">Hawaii</option>
-                    </select>
+                <select name="Pizza" id="selectPizza" class="selectPizza" onchange="seePrice()" size="7" multiple>
+                    <option value="margherita" data-price="4.00">Margherita</option>
+                    <option value="salami" data-price="4.50">Salami</option>
+                    <option value="hawaii" data-price="5.50">Hawaii</option>
+                </select>
 
-                    <p class="priceTotal">Total Price: 0,0 €</p>
-                    <input type="hidden" name="totalPrice" id="totalPrice" value="0.00">
+                <!-- Hidden inputs for the pizza name and price -->
+                <input type="hidden" name="pizzaName" id="pizzaName" value="">
+                <input type="hidden" name="pizzaPrice" id="pizzaPrice" value="0.00">
 
-                    <div>
-                        <input
-                            type="text"
-                            id="inputAddress"
-                            name="address"
-                            placeholder="Ihre Adresse"
-                            size="20"
-                        >
-                    </div>
-                    <div>
-                        <button type="reset">Alle Loschen</button>
-                        <button
-                            type="button"
-                            onclick="clearSelecOption()"
-                        >
-                            Auswahl Loschen
-                        </button>
-                        <button type="submit">Bestellen</button>
-                    </div>
-                </form>
+                <p class="priceTotal">Total Price: 0,0 €</p>
+                <input type="hidden" name="totalPrice" id="totalPrice" value="0.00">
 
-                <br>
+                <div>
+                    <input
+                        type="text"
+                        id="inputAddress"
+                        name="address"
+                        placeholder="Ihre Adresse"
+                        size="20"
+                    >
+                </div>
+                <div>
+                    <button type="reset">Alle Löschen</button>
+                    <button
+                        type="button"
+                        onclick="clearSelecOption()"
+                    >
+                        Auswahl Löschen
+                    </button>
+                    <button type="submit">Bestellen</button>
+                </div>
+            </form>
 
-                <script src="interact.js"></script>
+            <br>
+
+            <script src="interact.js"></script>
             </body>
             </html>
-            HTML;
-            }
+        HTML;
+    }
 
-    public static function main():void
-    {
+    public static function main(): void {
         try {
             $page = new Bestellung();
             $page->generateView();

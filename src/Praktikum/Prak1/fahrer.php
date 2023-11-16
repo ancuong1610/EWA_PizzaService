@@ -41,6 +41,12 @@ class Driver {
     
         echo <<<HTML
             <hr> <!-- Divider line -->
+
+            <form action="https://echo.fbi.h-da.de/" method="post">
+                <input type="hidden" name="driver_name" value="{$this->name}">
+                <button type="submit" name="submit_driver_name">Submit Driver Name</button>
+            </form>
+
             </body>
             </html>
         HTML;
