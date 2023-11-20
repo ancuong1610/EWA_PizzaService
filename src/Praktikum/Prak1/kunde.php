@@ -16,69 +16,61 @@ class Customer {
             ['id' => 3, 'pizzas' => ['Margherita'], 'totalPrice' => '4,00 €', 'status' => 'Lieferung']
         ];
 
-        echo <<<HTML
-            <!DOCTYPE html>
-            <html lang="de">
-            <head>
-                <meta charset="UTF-8">
-                <title>Customer Dashboard</title>
-            </head>
-            <body>
-                <h1>
-                    <strong>Welcome, {$customerInfo['name']}</strong>
-                </h1>
-                <p><strong>Customer Information:</strong></p>
-                <p><strong>Name:</strong> {$customerInfo['name']}</p>
-                <p><strong>Age:</strong> {$customerInfo['age']}</p>
-                <p><strong>Address:</strong> {$customerInfo['address1']}, {$customerInfo['address2']}</p>
-                <p><strong>Payment Method:</strong> {$customerInfo['payment']}</p>
+        ?>
+        <!DOCTYPE html>
+        <html lang="de">
+        <head>
+            <meta charset="UTF-8">
+            <title>Customer Dashboard</title>
+        </head>
+        <body>
+            <header>
+                <h1>Welcome, <strong><?= $customerInfo['name'] ?></strong></h1>
+            </header>
 
-                <h2>
-                    <strong>Your Orders</strong>
-                </h2>
-        HTML;
+            <section id="customer-info">
+                <h2>Customer Information:</h2>
+                <p><strong>Name:</strong> <?= $customerInfo['name'] ?></p>
+                <p><strong>Age:</strong> <?= $customerInfo['age'] ?></p>
+                <p><strong>Address:</strong> <?= $customerInfo['address1'] ?>, <?= $customerInfo['address2'] ?></p>
+                <p><strong>Payment Method:</strong> <?= $customerInfo['payment'] ?></p>
+            </section>
 
-        foreach ($orders as $order) {
-            echo <<<HTML
-                <p><strong>Order #{$order['id']}</strong></p>
-                <p><strong>Pizzas:</strong></p>
-            HTML;
+            <section id="orders">
+                <h2>Your Orders</h2>
 
-            foreach ($order['pizzas'] as $pizza) {
-                echo <<<HTML
-                    <img
-                        width="150"
-                        height="100"
-                        src="pizza.jpg"
-                        alt="Pizza Image"
-                    >
-                    <br>
-                    <p>{$pizza}</p>
-                    <hr> <!-- Divider for clarity -->
-                HTML;
-            }
+                <?php foreach ($orders as $order): ?>
+                    <article class="order">
+                        <h3>Order #<?= $order['id'] ?></h3>
+                        <section class="pizzas">
+                            <h4>Pizzas:</h4>
+                            <?php foreach ($order['pizzas'] as $pizza): ?>
+                                <img width="150" height="100" src="pizza.jpg" alt="Pizza Image">
+                                <p><?= $pizza ?></p>
+                                <hr>
+                            <?php endforeach; ?>
+                        </section>
 
-            echo <<<HTML
-                    <p><strong>Total Price:</strong> {$order['totalPrice']}</p>
-                    <p><strong>Status:</strong> {$order['status']}</p>
-                    <input type="hidden" name="customer_name" value="{$customerInfo['name']}">
-                    <hr> <!-- Divider for clarity -->
-            HTML;
-        }
+                        <p><strong>Total Price:</strong> <?= $order['totalPrice'] ?></p>
+                        <p><strong>Status:</strong> <?= $order['status'] ?></p>
+                        <input type="hidden" name="customer_name" value="<?= $customerInfo['name'] ?>">
+                        <hr>
+                    </article>
+                <?php endforeach; ?>
+            </section>
 
-        echo <<<HTML
-                <form action="https://echo.fbi.h-da.de/" method="post">
-                    <button type="submit" name="submit_all_orders">Update All Orders</button>
-                </form>
+            <form action="https://echo.fbi.h-da.de/" method="post">
+                <button type="submit" name="submit_all_orders">Update All Orders</button>
+            </form>
 
-                <div id="statusBar">
-                    <!-- Status bar for orders (im Vorberitung, fertig, Lieferung) -->
-                </div>
+            <div id="statusBar">
+                <!-- Status bar for orders (im Vorberitung, fertig, Lieferung) -->
+            </div>
 
-                <script src="interact.js"></script>
-            </body>
-            </html>
-        HTML;
+            <script src="interact.js"></script>
+        </body>
+        </html>
+        <?php
     }
 
     public static function main(): void {

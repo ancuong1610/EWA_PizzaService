@@ -23,13 +23,13 @@ class Driver {
             </head>
             <body>
                 <hr> <!-- Divider line -->
-    
+
                 <p><strong>Name:</strong> {$this->name}</p>
                 <p><strong>Age:</strong> {$this->age}</p>
                 <p><strong>Driver License:</strong> {$this->driverLicense}</p>
-    
+
         HTML;
-    
+
         if (!empty($this->orderIDs)) {
             echo '<p><strong>Currently Delivering Orders:</strong></p>';
             echo '<ul>';
@@ -37,21 +37,25 @@ class Driver {
                 echo "<li>Order #{$orderID}</li>";
             }
             echo '</ul>';
+            
+            // Display the form with radio buttons for each order
+            echo '<form action="https://echo.fbi.h-da.de/" method="post">';
+            echo '<p>Select orders being delivered:</p>';
+            foreach ($this->orderIDs as $orderID) {
+                echo "<label><input type=\"radio\" name=\"delivered_orders[]\" value=\"$orderID\"> Order #$orderID</label><br>";
+            }
+            echo '<input type="hidden" name="driver_name" value="' . htmlspecialchars($this->name, ENT_QUOTES, 'UTF-8') . '">';
+            echo '<button type="submit" name="submit_driver_orders">Submit Delivered Orders</button>';
+            echo '</form>';
         }
-    
+
         echo <<<HTML
             <hr> <!-- Divider line -->
-
-            <form action="https://echo.fbi.h-da.de/" method="post">
-                <input type="hidden" name="driver_name" value="{$this->name}">
-                <button type="submit" name="submit_driver_name">Submit Driver Name</button>
-            </form>
 
             </body>
             </html>
         HTML;
     }
-    
 
     public static function main(): void {
         // Dummy data for three drivers
