@@ -1,0 +1,40 @@
+.body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: black;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .brand {
+    color: white;
+    font-size: 36px; /* Adjust the font size as needed */
+    font-weight: bold;
+    text-transform: uppercase; /* Convert text to uppercase */
+  }
+  
+  nav {
+    display: flex;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Add a class to the active page link to style it differently */
+  .nav-link.active {
+    text-decoration: underline;
+  }
+  

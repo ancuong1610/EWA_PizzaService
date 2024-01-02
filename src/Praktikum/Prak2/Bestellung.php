@@ -75,15 +75,10 @@ EOT;
     <form action="Bestellung.php" id="BestellungsInfos" method="post"  accept-charset="UTF-8">
         <select name="warenkorb[]" multiple="multiple" size="5">
 EOT;
-        foreach ($article_List as $article) {
-            $total_price = $total_price + $article['price'];
-            echo <<< EOT
-            <option value="$article[article_id]">$article[name]</option>
-        EOT;
-        };
+
         echo <<< EOT
         </select>
-        <p>Gesamtpreis: $total_price &euro;</p>
+        <p>TotalPrice: $total_price &euro;</p>
         <input type="text" name="address-input" size="30" maxlength="60" placeholder="Ihre Adresse" value="" required style="display: block"/>
         <input type="reset" value="Alle Löschen"/>
         <input type="reset" value="Auswahl Löschen"/>

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap');
+body {
+  font-family: 'Rubik Doodle Shadow', sans-serif;
+  color: white;
+  font-size: 20px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1; /* Ensures the pseudo-element is behind the content */
+  transform: scaleX(-1);
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5); /* Use rgba for a semi-transparent black */
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  color: white;
+  font-size: 36px; /* Adjust the font size as needed */
+  font-weight: bold;
+  text-transform: uppercase; /* Convert text to uppercase */
+}
+
+nav {
+  display: flex;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Add a class to the active page link to style it differently */
+.nav-link.active {
+  text-decoration: underline;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article_detail_flex_container {
+  flex: 1;
+}
+
+.warenkorb_section {
+  flex: 0 0 40%; /* Adjust the width as needed */
+}

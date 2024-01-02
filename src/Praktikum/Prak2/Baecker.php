@@ -93,6 +93,7 @@ HERE;
                 <th>fertig</th>
             </tr>
 HERE;
+
             foreach ($bestellung as $row_bestellung) {
                 
                 $idBestellt="bestellt" . "$row_bestellung[ordered_article_id]";
