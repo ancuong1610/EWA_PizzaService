@@ -6,9 +6,9 @@
 # Customer:
 <img width="1438" alt="Screenshot 2024-01-06 at 19 19 09" src="https://github.com/ancuong1610/EWA_PizzaService/assets/66347972/462ed3e1-0441-4e1c-a3f1-21b700984365">
 # Driver:
-<img width="1440" alt="Screenshot 2024-01-06 at 19 19 32" src="https://github.com/ancuong1610/EWA_PizzaService/assets/66347972/474f4c4c-4cfe-4fb9-aa59-26ec632e8259">
-# Baker:
 <img width="1440" alt="Screenshot 2024-01-06 at 19 19 20" src="https://github.com/ancuong1610/EWA_PizzaService/assets/66347972/b871e4da-dfe1-46f6-b2d0-239568e3b010">
+# Baker:
+<img width="1440" alt="Screenshot 2024-01-06 at 19 19 32" src="https://github.com/ancuong1610/EWA_PizzaService/assets/66347972/474f4c4c-4cfe-4fb9-aa59-26ec632e8259">
 # EWA Docker Setup
 You know about [Docker](https://www.docker.com) and Docker is running on your system? You do not want to mess up your system by installing a web server and all the fancy software you need for EWA?
 
