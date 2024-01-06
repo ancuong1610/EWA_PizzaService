@@ -86,4 +86,4 @@ Note: The name of this image may vary depending on your installation. Please che
 If you can not run docker you have to setup the environment for EWA yourself. You need the same setup that is used for the EWA-lab. You will find some hints on the installation in the section "Technische Hinweise" of the current EWA lab. 
 
   Enjoy
-  Ralf Hahn, Feb 2022
+  Ralf Hahn, Feb 2022# EWA_PizzaService
