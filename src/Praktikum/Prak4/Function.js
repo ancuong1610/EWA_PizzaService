@@ -68,7 +68,7 @@ function deleteSelectedOption(){
     "use strict";
     var cart = document.getElementById("warenkorb");
     for(let i = 0; i < cart.options.length(); i++){
-        while(cart.options[i].selected){
+        if(cart.options[i].selected){
             subPricefromCart(cart.options[i].getAttribute('data-price'));
             cart.remove(i);
         }

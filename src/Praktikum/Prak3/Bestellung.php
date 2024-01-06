@@ -115,9 +115,9 @@ class Bestellung extends Page
                     </select>   
                     <p id="gesamtpreis">Gesamtpreis: </span><span id="total_price">$total_price </span>&euro;</p>
                     <input id="address_input" type="text" name="address-input" size="30" maxlength="60" placeholder="Ihre Adresse" value="" required style="display: block"/>
-                    <input class="btn" id="delete_all_btn" type="button" onclick = "deleteAllOption" value="Remove All"/>
-                    <input class="btn" id="delete_btn" type="button" onclick = "deleteSelectedOption" value="Remove Selected"/>
-                    <input class="btn" id="submit_btn" type="button" onclick = "selectAllOption" value="Submit"/>
+                    <input class="btn" id="delete_all_btn" type="button" onclick = "deleteAllOption()" value="Remove All"/>
+                    <input class="btn" id="delete_btn" type="button" onclick = "deleteSelectedOption()" value="Remove Selected"/>
+                    <input class="btn" id="submit_btn" type="button" onclick = "selectAllOption()" value="Submit"/>
                 </form>
             </div>
         </section>

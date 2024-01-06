@@ -115,9 +115,9 @@ class Bestellung extends Page
                     </select>   
                     <p id="gesamtpreis">Gesamtpreis: </span><span id="total_price">$total_price </span>&euro;</p>
                     <input id="address_input" type="text" name="address-input" size="30" maxlength="60" placeholder="Ihre Adresse" value="" required style="display: block"/>
-                    <input class="btn" id="delete_all_btn" type="reset" onclick = "deleteAllOption" value="Remove All"/>
-                    <input class="btn" id="delete_btn" type="reset" onclick = "deleteSelectedOption" value="Remove Selected"/>
-                    <input class="btn" id="submit_btn" type="submit" onclick = "selectAllOption" value="Submit"/>
+                    <input class="btn" id="delete_all_btn" type="reset" onclick = "deleteAllOption()" value="Remove All"/>
+                    <input class="btn" id="delete_btn" type="reset" onclick = "deleteSelectedOption()" value="Remove Selected"/>
+                    <input class="btn" id="submit_btn" type="submit" onclick = "selectAllOption()" value="Submit"/>
                 </form>
             </div>
         </section>
@@ -150,18 +150,18 @@ class Bestellung extends Page
 
                 $_SESSION['last_ordering_id'] = $new_inserted_ordering_id;
 
-                // //insert from warenkorb into ordered_article TABLE
-                //     $index = 0;
-                //     foreach ($ordered_article_list as $ordered_article) {
-                //         $sqlInsertOrderedArticleCommand = "INSERT INTO ordered_article 
-                //             SET ".
-                //             "ordering_id = $new_inserted_ordering_id, ".
-                //             "article_id = $ordered_article_list[$index],".
-                //             "status = 0";
-                //         $this->database->query($sqlInsertOrderedArticleCommand);
+                //insert from warenkorb into ordered_article TABLE
+                    $index = 0;
+                    foreach ($ordered_article_list as $ordered_article) {
+                        $sqlInsertOrderedArticleCommand = "INSERT INTO ordered_article 
+                            SET ".
+                            "ordering_id = $new_inserted_ordering_id, ".
+                            "article_id = $ordered_article_list[$index],".
+                            "status = 0";
+                        $this->database->query($sqlInsertOrderedArticleCommand);
 
-                //         $index = $index+1;
-                //     }
+                        $index = $index+1;
+                    }
             }
         }
     }

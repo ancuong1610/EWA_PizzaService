@@ -49,7 +49,7 @@ class Kunde extends Page
         return $bestellungArray;
     }
 
-    private function fillStatusInfo(string $orderedArticleID = "", string $name = "", string $status = ""):void
+    private function fillStatusInfo(string $orderedArticleID = "", string $article_name= "", string $status = ""):void
     {
         $idBestellt="bestellt" . "$orderedArticleID";
         $idImOfen="imOfen" . "$orderedArticleID";
@@ -76,10 +76,13 @@ class Kunde extends Page
         }
 
         echo <<<EOT
-            <div>
-                <h3>$name: </h3><p>$checkstatusarray[$status]</p>
-            </div>
-            <br>
+            <script src="StatusUpdate.js"></script>
+            <section className="pizza_Order" class="myDiv">
+            <h3>$article_name</h3>
+            <h4>Ordered Article ID: $orderedArticleID</h4>
+            <input type="hidden" name="pizza_id" value="$orderedArticleID">
+            <p>$checkstatusarray[$status]</p>
+        </section>
         EOT;
 
     }
